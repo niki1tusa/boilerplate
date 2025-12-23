@@ -12,7 +12,7 @@
 		"lint:fix": "eslint src --fix",
 		"format": "prettier . --write",
 		"format:check": "prettier . --check",
-		"lint-staged": "lint-staged -c lint-staged.config.js",
+		"lint-staged": "lint-staged -c lint-staged.config.cjs",
 		"commitlint": "commitlint"
 	},
 	"dependencies": {
