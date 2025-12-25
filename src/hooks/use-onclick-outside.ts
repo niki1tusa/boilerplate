@@ -9,6 +9,7 @@ export function useClickOutside<T extends HTMLElement>(
 ) {
 	const ref = useRef<T | null>(null);
 	useEffect(() => {
+		const controller = new AbortController();
 		const listener = (event: MouseEvent | TouchEvent) => {
 			const target = event.target as Node | null;
 			if (!target) return;
@@ -21,12 +22,11 @@ export function useClickOutside<T extends HTMLElement>(
 			handler(event);
 		};
 
-		document.addEventListener('mousedown', listener);
-		document.addEventListener('touchstart', listener);
+		document.addEventListener('mousedown', listener, { signal: controller.signal });
+		document.addEventListener('touchstart', listener, { signal: controller.signal });
 
 		return () => {
-			document.removeEventListener('mousedown', listener);
-			document.removeEventListener('touchstart', listener);
+			controller.abort();
 		};
 	}, [handler, ignoreRefs]);
 	return { ref };

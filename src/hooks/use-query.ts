@@ -8,6 +8,9 @@ type UseQueryProps<T> = {
 };
 
 // TODO: доделать сохранение в localStorage
+// TODO: ещё больше задейстовать AbortController
+// abort() - прерывает любое дейтсвие куда был проброшен signal
+// signal.aborted (true | false) - если true значит действие было прервано
 export function useQuery<T>({ url, initialData, queryKey }: UseQueryProps<T>) {
 	const [data, setData] = useState<T | null>(initialData ?? null);
 	const [error, setError] = useState<Error | null>(null);
