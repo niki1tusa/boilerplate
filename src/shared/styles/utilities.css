@@ -1,0 +1,20 @@
+@layer utilities {
+	.shadow-default {
+		@apply shadow shadow-neutral-400;
+	}
+	.p-page {
+		@apply px-[10vw] py-8 md:px-[6vw];
+	}
+	.p-small {
+		@apply px-3 py-2 md:px-5;
+	}
+	.inlineList {
+		@apply flex items-center justify-center gap-5;
+	}
+	.stackList {
+		@apply flex flex-col items-center justify-center gap-5;
+	}
+	.form {
+		@apply flex w-full flex-col gap-y-4 border bg-transparent p-6 shadow-sm;
+	}
+}
