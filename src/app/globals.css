@@ -11,7 +11,7 @@
 	}
 	html,
 	body {
-		@apply bg-background text-foreground h-dvh w-dvw overflow-hidden;
+		@apply bg-background text-foreground overflow-hidden;
 	}
 	ul {
 		@apply flex items-center;
