@@ -14,12 +14,12 @@ export default function Header({
 	return (
 		<header className={styleProps} {...rest}>
 			{typeof Logo === 'string' ? Logo : <Logo />}
-			<ul className='inlineList'>
+			<ul className='flex-center'>
 				{items.map(el => (
 					<li key={el}>{el}</li>
 				))}
 			</ul>
-			<ul className='inlineList'>
+			<ul className='flex-center'>
 				{anotherItems?.map(el => (
 					<li key={el}>{el}</li>
 				))}

@@ -1,0 +1,5 @@
+@layer components {
+	.form {
+		@apply flex w-full flex-col gap-y-4 border bg-transparent p-6 shadow-sm;
+	}
+}

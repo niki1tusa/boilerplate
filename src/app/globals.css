@@ -2,14 +2,22 @@
 @import 'tw-animate-css';
 @import '../shared/styles/theme.css';
 @import '../shared/styles/utilities.css';
-
+@import '../shared/styles/components.css';
 @custom-variant dark (&:is(.dark *));
 
 @layer base {
 	* {
 		@apply border-border outline-ring/50;
 	}
+	html,
 	body {
-		@apply bg-background text-foreground;
+		@apply bg-background text-foreground h-dvh w-dvw overflow-hidden;
+	}
+	ul {
+		@apply flex items-center;
+	}
+	button,
+	input[type='checkbox'] {
+		@apply cursor-pointer;
 	}
 }
