@@ -6,17 +6,21 @@ type UseQueryProps<T> = {
 	initialData?: T | null;
 	queryKey?: string;
 };
-
-// TODO: доделать сохранение в localStorage
-// TODO: ещё больше задейстовать AbortController
-// abort() - прерывает любое дейтсвие куда был проброшен signal
-// signal.aborted (true | false) - если true значит действие было прервано
+// TODO: add isFetching
 export function useQuery<T>({ url, initialData, queryKey }: UseQueryProps<T>) {
 	const [data, setData] = useState<T | null>(initialData ?? null);
 	const [error, setError] = useState<Error | null>(null);
 	const [isLoading, setIsLoading] = useState<boolean>(initialData == null);
 
-	const storageKey = useMemo(() => `Storage-Key: ${queryKey}-${url}`, [queryKey, url]);
+	const storageKey = useMemo(() => `Storage-Key: ${queryKey ?? 'default'}-${url}`, [queryKey, url]);
+
+	useEffect(() => {
+		const raw = localStorage.getItem(storageKey);
+		if (!raw) return;
+		const parseRaw = JSON.parse(raw);
+		setData(parseRaw);
+	}, [storageKey]);
+
 	useEffect(() => {
 		if (!url) return;
 		const controller = new AbortController();
@@ -30,6 +34,7 @@ export function useQuery<T>({ url, initialData, queryKey }: UseQueryProps<T>) {
 				const resJson = (await res.json()) as T;
 
 				setData(resJson);
+				localStorage.setItem(storageKey, JSON.stringify(resJson));
 			} catch (e: unknown) {
 				if (controller.signal.aborted) return;
 				setError(e instanceof Error ? e : new Error('Error unknown!!!'));

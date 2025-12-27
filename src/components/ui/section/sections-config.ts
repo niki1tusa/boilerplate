@@ -24,7 +24,7 @@ export const sectionVariants = cva('w-full', {
 	},
 
 	defaultVariants: {
-		fullScreen: true,
+		fullScreen: false,
 		display: 'flex',
 		direction: 'col',
 		justify: 'center',

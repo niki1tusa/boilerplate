@@ -1,13 +1,22 @@
 @layer utilities {
+	/* shadow */
 	.shadow-default {
 		@apply shadow shadow-neutral-400;
 	}
-	.p-page {
-		@apply px-[10vw] py-8 md:px-[6vw];
+	.shadow-soft {
+		@apply shadow-sm shadow-neutral-400;
+	}
+	.shadow-strong {
+		@apply shadow-lg shadow-neutral-400;
+	}
+	/* padding */
+	.p-body {
+		@apply px-[15px];
 	}
 	.p-small {
 		@apply px-3 py-2 md:px-5;
 	}
+	/* flexbox */
 	.flex-center {
 		@apply flex items-center justify-center;
 	}

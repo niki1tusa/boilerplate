@@ -3,15 +3,19 @@
 @import '../shared/styles/theme.css';
 @import '../shared/styles/utilities.css';
 @import '../shared/styles/components.css';
+
 @custom-variant dark (&:is(.dark *));
 
 @layer base {
 	* {
-		@apply border-border outline-ring/50;
+		@apply border-border outline-ring/50 m-0 p-0;
 	}
-	html,
+	html {
+		@apply h-dvh w-dvw bg-[#2b1714] text-[16px] text-[#69594F];
+	}
 	body {
-		@apply bg-background text-foreground h-dvh w-dvw;
+		line-height: 1.85714286em;
+		@apply text-foreground mx-auto h-dvh max-w-360 bg-[#2b1714] px-3.75 font-normal;
 	}
 	ul {
 		@apply flex items-center;

@@ -5,7 +5,6 @@ import { headerVariants } from './header-config';
 
 type HeaderVariantsProps = VariantProps<typeof headerVariants>;
 type LogoSvg = ComponentType<SVGProps<SVGSVGElement>>;
-
 export type HeaderProps = {
 	logo: string | LogoSvg;
 	items: string[];
